@@ -8,5 +8,5 @@ CREATE TABLE users (
 
 -- Insert sample data
 INSERT INTO users (name, email) VALUES
-('Tomislav', 'tomislav.mihalicek@versoaltima.hr'),
-('Reni', 'reni.popara@versoaltima.hr');
+('Tomislav', 'tomislav.mihalicek@test.org'),
+('Lav', 'lav.tolstoj@test.otg');

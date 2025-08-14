@@ -87,6 +87,11 @@ services:
     volumes:
       - ./web/nginx.conf:/etc/nginx/conf.d/vaultwarden.conf:ro
       - ./web/crts/:/etc/nginx/crts/:ro
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:80/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     ports:
       - "80:80"
       - "443:443"

@@ -8,8 +8,8 @@ services:
       - db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=pass1234
-      - POSTGRES_USER=app-user
-      - POSTGRES_DB=app-db
+      - POSTGRES_USER=app_user
+      - POSTGRES_DB=app_db
 volumes:
   db-data:
     name: db-data

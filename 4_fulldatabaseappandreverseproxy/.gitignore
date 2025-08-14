@@ -1,0 +1,4 @@
+backups/*
+web/*
+!backups/.gitkeep
+!web/nginx.conf

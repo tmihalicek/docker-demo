@@ -19,6 +19,8 @@ services:
       driver: json-file
       options:
         tag: docker-postgres
+        max-size: "10m"
+        max-file: "3"
 
     networks:
       - db-net

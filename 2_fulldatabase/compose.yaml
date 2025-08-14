@@ -21,7 +21,7 @@ services:
         tag: docker-postgres
         max-size: "10m"
         max-file: "3"
-  ### step 1: Adding new container
+  # # step 1: Adding new container
   # postgresbackup:
   #   image: prodrigestivill/postgres-backup-local:17
   #   user: 1001:1001

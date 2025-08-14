@@ -16,8 +16,10 @@ services:
       timeout: 5s
       retries: 5
     logging:
+      driver: json-file
       options:
         tag: docker-postgres
+
     networks:
       - db-net
 

@@ -66,6 +66,7 @@ services:
       - WEBSOCKET_ENABLED=true
       - SIGNUPS_ALLOWED=false
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - DOMAIN=${DOMAIN}
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:80/ || exit 1"]
       interval: 10s
@@ -83,31 +84,31 @@ services:
         tag: docker-app
         max-size: "10m"
         max-file: "3"
-  # step 1: Adding container nginx web server
-  nginx:
-    image: nginx:1.29.1-bookworm-perl
-    restart: unless-stopped
-    volumes:
-      - ./web/nginx.conf:/etc/nginx/conf.d/vaultwarden.conf:ro
-      - ./web/crts/:/etc/nginx/crts/:ro
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:80/ || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    ports:
-      - "80:80"
-      - "443:443"
-    command: ["nginx", "-g", "daemon off;"]
-    depends_on:
-      vaultwarden:
-        condition: service_healthy
-    logging:
-      driver: json-file
-      options:
-        tag: docker-web
-        max-size: "10m"
-        max-file: "3"
+  # # step 1: Adding container nginx web server
+  # nginx:
+  #   image: nginx:1.29.1-bookworm-perl
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./web/nginx.conf:/etc/nginx/conf.d/vaultwarden.conf:ro
+  #     - ./web/crts/:/etc/nginx/crts/:ro
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "curl -f http://localhost:80/ || exit 1"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   command: ["nginx", "-g", "daemon off;"]
+  #   depends_on:
+  #     vaultwarden:
+  #       condition: service_healthy
+  #   logging:
+  #     driver: json-file
+  #     options:
+  #       tag: docker-web
+  #       max-size: "10m"
+  #       max-file: "3"
 volumes:
   db-data:
     name: db-data

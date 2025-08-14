@@ -5,8 +5,8 @@ services:
     ports:
       - 5432:5432
     ### step 1: Volume persistence
-    volumes:
-      - db-data:/var/lib/postgresql/data
+    #volumes:
+    #  - db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=pass1234
       - POSTGRES_USER=app_user
@@ -28,6 +28,6 @@ services:
     #    max-size: "10m"
     #    max-file: "3"
 ### step 1: Volume persistence
-volumes:
-  db-data:
-    name: db-data
+#volumes:
+#  db-data:
+#    name: db-data
